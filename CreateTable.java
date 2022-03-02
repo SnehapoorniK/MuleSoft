@@ -10,11 +10,13 @@
             String url = "jdbc:sqlite:C://sqlite/SSSIT.db";  
               
             // SQL statement for creating a new table  
-            String sql = "CREATE TABLE IF NOT EXISTS movies (\n"  
-                    + " id integer PRIMARY KEY,\n"  
-                    + " name text NOT NULL,\n"  
-                    + " capacity real\n"  
-                    + ");";  
+            String sql = "CREATE TABLE movies (\n"  
+                        + " name char(20),\n"  
+                        + " actor char(20),\n"  
+                        + " actress char(20),\n"  
+                        + " director char(20),\n" 
+                        + " year int\n" 
+                        + ");";  
               
             try{  
                 Connection conn = DriverManager.getConnection(url);  
@@ -23,11 +25,7 @@
             } catch (SQLException e) {  
                 System.out.println(e.getMessage());  
             }  
-        }  
-       
-        /** 
-         * @param args the command line arguments 
-         */  
+        }   
         public static void main(String[] args) {  
             createNewTable();  
         }  
