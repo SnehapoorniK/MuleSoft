@@ -18,14 +18,17 @@
         }  
        
       
-        public void insert(String name, double year) {  
-            String sql = "INSERT INTO movies(name, year) VALUES(?,?)";  
+        public void insert(String name, String actor, String actress, String director, double year) {  
+            String sql = "INSERT INTO movies VALUES(?,?,?,?,?)";  
        
             try{  
                 Connection conn = this.connect();  
                 PreparedStatement pstmt = conn.prepareStatement(sql);  
-                pstmt.setString(1, name);  
-                pstmt.setDouble(2, year);  
+                pstmt.setString(1, name); 
+                pstmt.setString(2, actor); 
+                pstmt.setString(3, actress); 
+                pstmt.setString(4, director); 
+                pstmt.setDouble(5, year);  
                 pstmt.executeUpdate();  
             } catch (SQLException e) {  
                 System.out.println(e.getMessage());  
@@ -35,10 +38,9 @@
         public static void main(String[] args) {  
        
             Insert app = new Insert();  
-            // insert three new rows  
-            app.insert("First_movie", 2001);  
-            app.insert("Robert Movie", 2002);  
-            app.insert("Tom Jerry", 2204);  
+            app.insert("Titanic","Leonardo DiCaprio","Kate Winslet","James Cameron", 1997");  
+            app.insert("Tenet","John David","Elizabeth" ,"Nolan",2020);  
+            app.insert("The imitation game", "Benedict","Kelra","Morten",2014);  
         }  
        
     }  
